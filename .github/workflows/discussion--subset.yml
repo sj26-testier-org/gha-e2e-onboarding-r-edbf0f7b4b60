@@ -1,5 +1,7 @@
-name: fork--scalar
-on: fork
+name: discussion--subset
+on:
+  discussion:
+    types: [transferred, deleted]
 permissions: {}
 jobs:
   probe:
@@ -13,8 +15,8 @@ jobs:
           token: ''
       - name: Execute source and complete event probe
         env:
-          LAB_CASE: fork--scalar
-          EVENT_FAMILY: fork
+          LAB_CASE: discussion--subset
+          EVENT_FAMILY: discussion
           EXPR_EVENT: ${{ toJSON(github.event) }}
           EXPR_REF: ${{ github.ref }}
           EXPR_SHA: ${{ github.sha }}

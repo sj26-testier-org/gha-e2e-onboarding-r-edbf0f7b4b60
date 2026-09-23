@@ -1,6 +1,7 @@
-name: fork--map-null
+name: discussion--no-match
 on:
-  fork:
+  discussion:
+    types: [lab_no_match]
 permissions: {}
 jobs:
   probe:
@@ -14,8 +15,8 @@ jobs:
           token: ''
       - name: Execute source and complete event probe
         env:
-          LAB_CASE: fork--map-null
-          EVENT_FAMILY: fork
+          LAB_CASE: discussion--no-match
+          EVENT_FAMILY: discussion
           EXPR_EVENT: ${{ toJSON(github.event) }}
           EXPR_REF: ${{ github.ref }}
           EXPR_SHA: ${{ github.sha }}
